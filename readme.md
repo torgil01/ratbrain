@@ -104,7 +104,22 @@ C1034|74|765
 
 Here we see that ID 1033 has a larger mean signal in the whole image compared to ID 1034, but a smaller mean signal in the brain. This suggest that the global signal is a better value to scale the signal to. We then simply scale the signal in the warped images by the nonzero mean in the original imgages.
 
-$$ S = 100 * S_{0}/M $$
+ S = 100*(im/mean) 
+
+# Using the normalized SPECT images
+The normalized SPECT images can be for voxelwise statistics or we can extract the mean values from the atlas labels.
+
+## Extracting mean values from atlas labels
+The Scwarz atlas has 100 labeled regions. We use the `get_table.m` script to extract mean values for each label.
+
+The data is written as a csv file.
+
+
+imageName, Accumbens_Core_Left, Accumbens_Core_Right, ..
+
+
+
+
 
 
 
