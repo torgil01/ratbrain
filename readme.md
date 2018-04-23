@@ -50,10 +50,22 @@ fslorient -setqform -0.177 0 0 12 0 0.177 0 -9 0 0 0.177 -16 0 0 0 1 $tmpFile
 fslorient -setsform -0.177 0 0 12 0 0.177 0 -9 0 0 0.177 -16 0 0 0 1 $tmpFile
 ```
 
-### Cropping
-The SPECT/CT images had a large field of view, covering head and forebody of the animal.
+### Cropping and scaling
+The SPECT/CT images had a large field of view, covering head and forebody of the animal. To reliabley warp the images to a brain template we need to isolate the part of the image that contain the brain.
 
-To reliabley warp the images to a brain template we need to isolate the part of the image that contain the brain. 
+In addition, SPECT data is not absolute, and total signal may fluctuate from scan to scan. Standard practice is to "center" the signal. This can be doine several ways. One may normalize the signal to the whole brain or whole image. The latter approach may be less sensitive to large signal flucuations in the brain due to the tracer.
+
+Example
+
+**ID**|**whole image**|**brain**
+:-----:|:-----:|:-----:
+C1033| 81| 723
+C1034|74|765
+
+Here we see that ID 1033 has a larger mean signal in the whole image compared to ID 1034, but a smaller mean signal in the brain. This suggest that the global signal is a better value to scale the signal to. We then simply scale the signal in the warped images by the nonzero mean in the original imgages.
+
+ S = 100*(im/mean) 
+
 
 Cropping is done semi-automatically by first finding the approximate voxel coordinates for the center of the brain manually using an image viewer. The fileame and x,y,z voxel coordinates needs to be saved in a csv file as in the example below.
 
@@ -64,11 +76,12 @@ Example csv file
  Control_1039_Scan_1_SPECT.nii.gz,246,254,259
  Control_1040_Scan_1_SPECT.nii.gz,256,253,274
 
-Based on these coordinates the `crop.sh` script extract a "box" around the coordinates for the center for the brain. A box with 140 x 140 x 126 voxels (RL,PA,IS) centered over the brain seems to work well. 
+Based on these coordinates the `crop_and_scale.sh` script extract a "box" around the coordinates for the center for the brain. A box with 140 x 140 x 126 voxels (RL,PA,IS) centered over the brain seems to work well. 
 
-The crop scrip is called with the csv fie as argumnet.
+
+The crop and scale scrip is called with the csv fie as argumnet.
 ```
-crop.sh coord.csv
+crop_and_scale.sh coord.csv readDir cropDir
 ```
 
 ## Warping the SPECT images to the MRI template
@@ -92,19 +105,6 @@ A number of files are created in the `crop` directory by the warp script. As an 
 
 **Note**: The warping also resample the images in the template space, meaning that the warped images will have the same field of view and resolution as the template. (The Schwarz template is 0.2 mm isotropic.)
 
-## SPECT signal normalization
-SPECT data is not absolute, and total signal may fluctuate from scan to scan. Standard practice is to "center" the signal. This can be doine several ways. One may normalize the signal to the whole brain or whole image. The latter approach may be less sensitive to large signal flucuations in the brain due to the tracer.
-
-Example
-
-**ID**|**whole image**|**brain**
-:-----:|:-----:|:-----:
-C1033| 81| 723
-C1034|74|765
-
-Here we see that ID 1033 has a larger mean signal in the whole image compared to ID 1034, but a smaller mean signal in the brain. This suggest that the global signal is a better value to scale the signal to. We then simply scale the signal in the warped images by the nonzero mean in the original imgages.
-
- S = 100*(im/mean) 
 
 # Using the normalized SPECT images
 The normalized SPECT images can be for voxelwise statistics or we can extract the mean values from the atlas labels.
@@ -114,8 +114,45 @@ The Scwarz atlas has 100 labeled regions. We use the `get_table.m` script to ext
 
 The data is written as a csv file.
 
+Example
 
-imageName, Accumbens_Core_Left, Accumbens_Core_Right, ..
+Filename,Accumbens_Core_Left,Accumbens_Core_Right,...
+Control_1033_Scan_1_SPECT_cropWarped.nii.gz,732.836143042046,732.836143042046,732.836143042046,..
+Control_1034_Scan_1_SPECT_cropWarped.nii.gz,807.097235612503,807.097235612503,807.097235612503,..
+
+
+# Pipeline
+We construct a simple pipeline for processing all the data 
+
+
+
+```
+#!/bin/bash
+# pipeline.sh
+
+scriptDir=$(basename $0)
+# dir where DICOM images are
+dcmDir=/home/torgil/tmp/rotte/git_base/img/raw_data
+# dir whch to write nii 
+niiDir=/home/torgil/tmp/rotte/git_base/img/nii
+# dir where the cropped images are saved
+cropDir=/home/torgil/tmp/rotte/git_base/img/crop
+
+
+# 1. Convert the raw dicom data to nifti format
+convert.sh $dcmDir $niiDir
+
+# 2. Crop and scale the images
+crop_and_scale.sh coord.csv $niiDir $cropDir
+
+# 3. Template warping
+warp.sh $cropDir $niiDir
+
+# 4. Extract labels
+matlab -r -nodesktop -nosplash -singleCompThread -r "${addpath('$scriptDir'); get_table; exit"}" \
+```
+
+
 
 
 
