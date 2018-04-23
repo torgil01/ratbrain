@@ -1,6 +1,9 @@
 startDir=$(pwd)
-imDir=/home/torgil/tmp/rotte/git_base/img/crop
-ctDir=/home/torgil/tmp/rotte/git_base/img/nii
+#imDir=/home/torgil/tmp/rotte/git_base/img/crop
+#ctDir=/home/torgil/tmp/rotte/git_base/img/nii
+imDir=$1
+ctDir=$2
+
 imFiles=$(find $imDir -type f -name "*SPECT_crop.nii.gz")
 target=/home/torgil/tmp/rotte/atlas/Schwarz_T2w_Intra.nii
 

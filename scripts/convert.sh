@@ -1,7 +1,7 @@
 #!/bin/bash
 
-dcmDir=/home/torgil/tmp/rotte/git_base/img/raw_data
-niiDir=/home/torgil/tmp/rotte/git_base/img/nii
+dcmDir=$1
+niiDir=$2
 
 dcmFiles=$(find $dcmDir -type f -name \*)
 

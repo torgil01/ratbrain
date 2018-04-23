@@ -17,8 +17,11 @@
 # files are read from readDir and the cropped fies are written to
 # cropDir
 # 
-readDir=/home/torgil/tmp/rotte/git_base/img/nii
-cropDir=/home/torgil/tmp/rotte/git_base/img/crop
+
+
+readDir=$1
+cropDir=$2
+
 
 xs=70 # neg offset 
 ys=70 # neg offset 
@@ -32,11 +35,13 @@ i=0
 while IFS=, read fn x y z
 do
     inputFile=${readDir}/${fn}
+    meanVal=$(fslstats $inputFile -M) #nonzero mean
     bname=$(remove_ext $fn) # fsl util
     inputFile=${readDir}/${fn}
     cropFile=${cropDir}/${bname}_crop.nii.gz
-    cmd="fslroi $inputFile $cropFile $(($x - $xs)) $dx $(($y - $ys)) $dy $(($z - $zs)) $dz"
-    echo $cmd
+    scaledCropFile=${cropDir}/${bname}_scrop.nii.gz
+    fslroi $inputFile $cropFile $(($x - $xs)) $dx $(($y - $ys)) $dy $(($z - $zs)) $dz
+    fslmaths $cropFile -div $meanVal -mul 100 $scaledCropFile
 done < $1
 
 
