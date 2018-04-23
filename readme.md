@@ -21,13 +21,13 @@ find /image_dir/ -type f -name "* *" | rename 's/ /_/g'
 
 ## Data organization
 
->    base
->     |------- img
->               |------ raw_data (Dicom files)
->               |------ nii  (Dicom files converted to nii format)
->               |------ crop (Cropped image files)
->     |------- scripts
->     |------- doc
+    base
+     |------- img
+               |------ raw_data (Dicom files)
+               |------ nii  (Dicom files converted to nii format)
+               |------ crop (Cropped image files)
+     |------- scripts
+     |------- doc
 
 
 ### DICOM to nifti conversion
