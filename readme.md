@@ -70,11 +70,12 @@ Here we see that ID 1033 has a larger mean signal in the whole image compared to
 Cropping is done semi-automatically by first finding the approximate voxel coordinates for the center of the brain manually using an image viewer. The fileame and x,y,z voxel coordinates needs to be saved in a csv file as in the example below.
 
 Example csv file
-
+```
 Control_1033_Scan_1_SPECT.nii.gz,261,245,273
 Control_1034_Scan_1_SPECT.nii.gz,255,251,282
 Control_1039_Scan_1_SPECT.nii.gz,246,254,259
 Control_1040_Scan_1_SPECT.nii.gz,256,253,274
+```
 
 Based on these coordinates the `crop_and_scale.sh` script extract a "box" around the coordinates for the center for the brain. A box with 140 x 140 x 126 voxels (RL,PA,IS) centered over the brain seems to work well. 
 
@@ -115,11 +116,11 @@ The Scwarz atlas has 100 labeled regions. We use the `get_table.m` script to ext
 The data is written as a csv file.
 
 Example
-
+```
 Filename,Accumbens_Core_Left,Accumbens_Core_Right,...
 Control_1033_Scan_1_SPECT_cropWarped.nii.gz,732.836143042046,732.836143042046,732.836143042046,..
 Control_1034_Scan_1_SPECT_cropWarped.nii.gz,807.097235612503,807.097235612503,807.097235612503,..
-
+```
 
 # Pipeline
 We construct a simple pipeline for processing all the data 
