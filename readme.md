@@ -126,7 +126,7 @@ We construct a simple pipeline for processing all the data
 
 
 
-```
+```bash
 #!/bin/bash
 # pipeline.sh
 
