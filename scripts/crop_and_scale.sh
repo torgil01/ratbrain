@@ -19,8 +19,8 @@
 # 
 
 
-readDir=$1
-cropDir=$2
+readDir=$2
+cropDir=$3
 
 
 xs=70 # neg offset 
