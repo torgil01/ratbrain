@@ -4,7 +4,7 @@ startDir=$(pwd)
 imDir=$1
 ctDir=$2
 
-imFiles=$(find $imDir -type f -name "*SPECT_crop.nii.gz")
+imFiles=$(find $imDir -type f -name "*SPECT_scrop.nii.gz")
 target=/home/torgil/tmp/rotte/atlas/Schwarz_T2w_Intra.nii
 
 for fi in ${imFiles[@]}; do
