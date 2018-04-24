@@ -7,7 +7,7 @@ atlasPath  = '/home/torgil/tmp/rotte/atlas/Schwarz/SAMIT.nii'; % atlas rois
 
 % find the SPECT files in atlas space
 imgDir = '/home/torgil/tmp/rotte/git_base/img/crop/';
-files = findFiles(imgDir,'.*\_SPECT_cropWarped.nii.gz');
+files = findFiles(imgDir,'.*\_SPECT_scropWarped.nii.gz');
 
 % read atlas 
 [~,atlas] = readNii(atlasPath);
