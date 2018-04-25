@@ -40,7 +40,7 @@ for fi in ${imFiles[@]}; do
     # apply warp on CT if we find a corresp CT
     fiext=$(remove_ext $fi)
     fiext=$(basename $fiext)
-    ctFile=${ctDir}/${fiext/SPECT_crop/CT}.nii.gz
+    ctFile=${ctDir}/${fiext/SPECT_scrop/CT}.nii.gz
     ctFileWarped=${imDir}/${fiext/SPECT/CT}Warped.nii.gz
     if [ -e "$ctFile" ]; then
     
