@@ -1,4 +1,4 @@
-function get_table
+function vals = get_table
 % get mean values from atlas lables in a number of files
 
 atlasType = 'Schwarz';
@@ -41,15 +41,29 @@ for i = 1:length(files),
 end
 
 tableFile = 'table.csv';
-labs = {'Filename',labels{2}{:}};
+labs = {'Filename','id','sess','group',labels{2}{:}};
 % construct table 
-vals = cell(nFiles,nLabels+1); % extra filename,id, group, scan#
+vals = cell(nFiles,nLabels+4); % extra filename,id, group, scan#
 vals(:,1) = files;
 % extract id, group and scan# from filename and put in array 
-%[~,fname] = rmExt(fpfn)
+%id = zeros(nFiles,1);
+%sess = zeros(nFiles,1);
+%grp = cell(nFiles,1);
+for i=1:nFiles,
+    [~,fname] = rmExt(files{i});
+    s = textscan(fname,'%s%n%s%n%s%s','Delimiter','_');    
+    id = s{2};
+    sess = s{4};
+    grp = s{1};
+    vals{i,2} = id;
+    vals{i,3} = sess;
+    vals{i,4} = grp;
+end
+%vals(:,2) = id;
+%vals(:,3) = sess;
+%vals(:,4) = grp;
 
-
-vals(:,2:end)=num2cell(tableArray);
+vals(:,5:end)=num2cell(tableArray);
 T = cell2table(vals,'VariableNames',labs);
 
 % save table
