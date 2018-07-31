@@ -1,9 +1,19 @@
 function vals = get_table
 % get mean values from atlas lables in a number of files
 
+% atlas type can be "Schwarz" or "WHS"
 atlasType = 'Schwarz';
-labelsPath = '/home/torgil/tmp/rotte/atlas/Schwarz/SAMIT.txt'; % atlas labels
-atlasPath  = '/home/torgil/tmp/rotte/atlas/Schwarz/SAMIT.nii'; % atlas rois 
+
+switch atlasType,
+    case 'Schwarz',        
+        labelsPath = '/home/torgil/tmp/rotte/atlas/Schwarz/SAMIT.txt'; % atlas labels
+        atlasPath  = '/home/torgil/tmp/rotte/atlas/Schwarz/SAMIT.nii'; % atlas rois
+    case 'WHS',        
+        labelsPath = '/home/torgil/tmp/rotte/atlas/whs/WHS_SD_rat_atlas_v2.label'; % atlas labels
+        atlasPath  = '/home/torgil/tmp/rotte/atlas/whs/WHS_SD_rat_atlas_v2.nii.gz'; % atlas rois
+    otherwise,
+        error('Unknown atlas type')
+end
 
 % find the SPECT files in atlas space
 imgDir = '/home/torgil/tmp/rotte/git_base/img/crop/';
