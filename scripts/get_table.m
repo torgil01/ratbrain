@@ -2,22 +2,25 @@ function vals = get_table
 % get mean values from atlas lables in a number of files
 
 % atlas type can be "Schwarz" or "WHS"
-atlasType = 'Schwarz';
+atlasType = 'WHS';
 
 switch atlasType,
     case 'Schwarz',        
         labelsPath = '/home/torgil/tmp/rotte/atlas/Schwarz/SAMIT.txt'; % atlas labels
         atlasPath  = '/home/torgil/tmp/rotte/atlas/Schwarz/SAMIT.nii'; % atlas rois
+        % find the SPECT files in atlas space
+        imgDir = '/home/torgil/tmp/rotte/git_base/img/crop/';
+        files = findFiles(imgDir,'.*\_SPECT_scropWarped.nii.gz');
     case 'WHS',        
-        labelsPath = '/home/torgil/tmp/rotte/atlas/whs/WHS_SD_rat_atlas_v2.label'; % atlas labels
-        atlasPath  = '/home/torgil/tmp/rotte/atlas/whs/WHS_SD_rat_atlas_v2.nii.gz'; % atlas rois
+        labelsPath = '/home/torgil/tmp/rotte/atlas/whs/WHS_SD_rat_atlas_hemi.label'; % atlas labels
+        atlasPath  = '/home/torgil/tmp/rotte/atlas/whs/WHS_rat_atlas_hemi_02mm.nii.gz'; % atlas rois        
+        % find the SPECT files in atlas space
+        imgDir = '/home/torgil/tmp/rotte/git_base/img/crop_whs/';
+        files = findFiles(imgDir,'.*\_SPECT_cropWarped.nii.gz');
     otherwise,
         error('Unknown atlas type')
 end
 
-% find the SPECT files in atlas space
-imgDir = '/home/torgil/tmp/rotte/git_base/img/crop/';
-files = findFiles(imgDir,'.*\_SPECT_scropWarped.nii.gz');
 
 % read atlas 
 [~,atlas] = readNii(atlasPath);
@@ -50,7 +53,7 @@ for i = 1:length(files),
     end
 end
 
-tableFile = 'table.csv';
+tableFile = ['table_' atlasType '.csv'];
 labs = {'Filename','id','sess','group',labels{2}{:}};
 % construct table 
 vals = cell(nFiles,nLabels+4); % extra filename,id, group, scan#
