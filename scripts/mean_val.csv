@@ -1,31 +1,31 @@
-filename,meanValue
-Control_1028_Scan_1_SPECT_artifacts.nii.gz,40.014270 
-Control_1028_Scan_2_SPECT_artifacts.nii.gz,81.043945 
-Control_1030_Scan_1_SPECT_artifacts.nii.gz,33.846329 
-Control_1030_Scan_2_SPECT_artifacts.nii.gz,45.470724 
-Control_1033_Scan_1_SPECT.nii.gz,81.249631 
-Control_1033_Scan_2_SPECT.nii.gz,103.791473 
-Control_1034_Scan_1_SPECT.nii.gz,74.069844 
-Control_1034_Scan_2_SPECT.nii.gz,110.504635 
-Control_1037_Scan_1_SPECT.nii.gz,69.996039 
-Control_1037_Scan_2_SPECT.nii.gz,131.801479 
-Control_1038_Scan_1_SPECT.nii.gz,61.822738 
-Control_1038_Scan_2_SPECT.nii.gz,135.236238 
-Control_1039_Scan_1_SPECT.nii.gz,69.217689 
-Control_1039_Scan_2_SPECT.nii.gz,153.479055 
-Control_1040_Scan_1_SPECT.nii.gz,51.605624 
-Control_1040_Scan_2_SPECT.nii.gz,120.406463 
-Treatment_1024_Scan_1_SPECT.nii.gz,64.926512 
-Treatment_1024_Scan_2_SPECT.nii.gz,106.944940 
-Treatment_1025_Scan_1_SPECT.nii.gz,49.964567 
-Treatment_1025_Scan_2_SPECT.nii.gz,94.992075 
-Treatment_1027_Scan_1_SPECT.nii.gz,57.511883 
-Treatment_1027_Scan_2_SPECT.nii.gz,106.664686 
-Treatment_1031_Scan_1_SPECT_artifacts.nii.gz,21.140720 
-Treatment_1031_Scan_2_SPECT_artifacts.nii.gz,131.368725 
-Treatment_1032_Scan_1_SPECT_artifacts.nii.gz,25.959536 
-Treatment_1032_Scan_2_SPECT_artifacts.nii.gz,110.322762 
-Treatment_1035_Scan_1_SPECT.nii.gz,69.490010 
-Treatment_1035_Scan_2_SPECT.nii.gz,72.983885 
-Treatment_1036_Scan_1_SPECT.nii.gz,70.572129 
-Treatment_1036_Scan_2_SPECT.nii.gz,99.751692 
+filename,globMean,brainMean
+Treatment_1027_Scan_2_SPECT,106.664686 ,1180.888093 
+Control_1028_Scan_1_SPECT_artifacts,40.014270 ,181.490368 
+Control_1040_Scan_1_SPECT,51.605624 ,569.581105 
+Treatment_1036_Scan_2_SPECT,99.751692 ,897.373025 
+Treatment_1036_Scan_1_SPECT,70.572129 ,626.788187 
+Treatment_1035_Scan_1_SPECT,69.490010 ,591.893790 
+Control_1039_Scan_2_SPECT,153.479055 ,1135.251058 
+Control_1034_Scan_2_SPECT,110.504635 ,1048.398003 
+Control_1030_Scan_1_SPECT_artifacts,33.846329 ,225.956055 
+Control_1033_Scan_2_SPECT,103.791473 ,1033.820995 
+Treatment_1031_Scan_2_SPECT_artifacts,131.368725 ,1183.067822 
+Control_1038_Scan_2_SPECT,135.236238 ,1451.881138 
+Control_1028_Scan_2_SPECT_artifacts,81.043945 ,348.821333 
+Treatment_1027_Scan_1_SPECT,57.511883 ,671.375491 
+Treatment_1035_Scan_2_SPECT,72.983885 ,702.286110 
+Treatment_1025_Scan_2_SPECT,94.992075 ,730.364279 
+Control_1030_Scan_2_SPECT_artifacts,45.470724 ,297.633224 
+Treatment_1024_Scan_2_SPECT,106.944940 ,801.310107 
+Control_1034_Scan_1_SPECT,74.069844 ,772.312464 
+Control_1033_Scan_1_SPECT,81.249631 ,725.464988 
+Control_1037_Scan_1_SPECT,69.996039 ,818.211607 
+Control_1039_Scan_1_SPECT,69.217689 ,690.594701 
+Treatment_1032_Scan_2_SPECT_artifacts,110.322762 ,952.048930 
+Control_1040_Scan_2_SPECT,120.406463 ,1280.076890 
+Control_1038_Scan_1_SPECT,61.822738 ,683.103344 
+Treatment_1032_Scan_1_SPECT_artifacts,25.959536 ,132.852411 
+Control_1037_Scan_2_SPECT,131.801479 ,1166.297369 
+Treatment_1031_Scan_1_SPECT_artifacts,21.140720 ,187.373337 
+Treatment_1025_Scan_1_SPECT,49.964567 ,415.879491 
+Treatment_1024_Scan_1_SPECT,64.926512 ,597.541887 
