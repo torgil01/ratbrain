@@ -11,7 +11,8 @@ nnFiles=(WHS_rat_atlas_hemi.nii.gz \
 	 WHS_SD_v2_white_gray_mask_clipped.nii.gz)
 
 # trilinear for this
-intFiles=(WHS_SD_rat_T2star_v1.01.nii.gz)
+intFiles=(WHS_SD_rat_T2star_v1.01.nii.gz \
+	 WHS_SD_rat_T2star_v1.01_brain.nii.gz)
 
 
 for f in ${nnFiles[@]}; do
