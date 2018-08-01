@@ -16,7 +16,7 @@ switch atlasType,
         atlasPath  = '/home/torgil/tmp/rotte/atlas/whs/WHS_rat_atlas_hemi_02mm.nii.gz'; % atlas rois        
         % find the SPECT files in atlas space
         imgDir = '/home/torgil/tmp/rotte/git_base/img/crop_whs/';
-        files = findFiles(imgDir,'.*\_SPECT_cropWarped.nii.gz');
+        files = findFiles(imgDir,'.*\_SPECT.*\_cropWarped.nii.gz');
     otherwise,
         error('Unknown atlas type')
 end
