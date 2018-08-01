@@ -1,5 +1,5 @@
 #!/bin/bash
-# this script reads the crop coordinates from a csv file
+# reads the crop coordinates from a csv file
 # and crop the images according to the parameters
 # also the mean nonzero image intensity is written
 # to a csv file for later scaling of the data
@@ -66,6 +66,7 @@ i=0
 while IFS=, read fn x y z
 do
     inputFile=${readDir}/${fn}
+    echo "processing $inputFile"
     bname=$(remove_ext $fn) # fsl util
     inputFile=${readDir}/${fn}
     cropFile=${cropDir}/${bname}_crop.nii.gz
