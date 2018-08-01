@@ -7,7 +7,7 @@ ctDir=$2
 
 #imFiles=$(find $imDir -type f -name "*SPECT_scrop.nii.gz")
 #target=/home/torgil/tmp/rotte/atlas/Schwarz/Schwarz_T2w_Intra.nii
-imFiles=$(find $imDir -type f -name "*SPECT_crop.nii.gz")
+imFiles=$(find $imDir -type f -name "*SPECT*_crop.nii.gz")
 target=/home/torgil/tmp/rotte/atlas/whs/WHS_SD_rat_T2star_v1.01_brain_02mm.nii.gz
 
 for fi in ${imFiles[@]}; do
