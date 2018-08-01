@@ -1,11 +1,14 @@
+#!/bin/bash
 startDir=$(pwd)
 #imDir=/home/torgil/tmp/rotte/git_base/img/crop
 #ctDir=/home/torgil/tmp/rotte/git_base/img/nii
 imDir=$1
 ctDir=$2
 
-imFiles=$(find $imDir -type f -name "*SPECT_scrop.nii.gz")
-target=/home/torgil/tmp/rotte/atlas/Schwarz/Schwarz_T2w_Intra.nii
+#imFiles=$(find $imDir -type f -name "*SPECT_scrop.nii.gz")
+#target=/home/torgil/tmp/rotte/atlas/Schwarz/Schwarz_T2w_Intra.nii
+imFiles=$(find $imDir -type f -name "*SPECT_crop.nii.gz")
+target=/home/torgil/tmp/rotte/atlas/whs/WHS_SD_rat_T2star_v1.01_brain_02mm.nii.gz
 
 for fi in ${imFiles[@]}; do
     cd $imDir
@@ -40,16 +43,16 @@ for fi in ${imFiles[@]}; do
     # apply warp on CT if we find a corresp CT
     fiext=$(remove_ext $fi)
     fiext=$(basename $fiext)
-    ctFile=${ctDir}/${fiext/SPECT_scrop/CT}.nii.gz
+    ctFile=${ctDir}/${fiext/SPECT_crop/CT}.nii.gz # note scrop for scaled
     ctFileWarped=${imDir}/${fiext/SPECT/CT}Warped.nii.gz
     if [ -e "$ctFile" ]; then
-    
 	antsApplyTransforms -d 3 \
 			    -i $ctFile \
 			    -o $ctFileWarped \
 			    -r ${warpName}Warped.nii.gz \
 			    -t ${warpName}1Warp.nii.gz \
 			    -t ${warpName}0GenericAffine.mat
+	
    fi
     
 done
