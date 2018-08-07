@@ -22,11 +22,8 @@ scaleAndDiff <- function(rawData){
   d <- matrix(nrow = length(idList), ncol=length(roiLabels))
   
   for (i in 1:length(idList)){
-   # t1 <- as.matrix(scaledData[(scaledData$id == idList[i]) & (scaledData$sess == 1),5:(4+numVar)])
-  #   t2 <- as.matrix(scaledData[(scaledData$id == idList[i]) & (scaledData$sess == 2),5:(4+numVar)])
-  t1 <- as.matrix(scaledData[(scaledData$id == idList[i]) & (scaledData$sess == 1),roiLabels])
-  t2 <- as.matrix(scaledData[(scaledData$id == idList[i]) & (scaledData$sess == 2),roiLabels])
-    
+    t1 <- as.matrix(scaledData[(scaledData$id == idList[i]) & (scaledData$sess == 1),roiLabels])
+    t2 <- as.matrix(scaledData[(scaledData$id == idList[i]) & (scaledData$sess == 2),roiLabels])
     grp <- scaledData[(scaledData$id == idList[i]) & (scaledData$sess == 1),]$group
     d[i,] <- t2 - t1
     group[i] <- grp
