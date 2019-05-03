@@ -2,7 +2,7 @@ function vals = get_table
 % get mean values from atlas lables in a number of files
 
 % atlas type can be "Schwarz" or "WHS"
-atlasType = 'WHS';
+atlasType = 'WHS_extra';
 
 switch atlasType,
     case 'Schwarz',        
@@ -17,6 +17,12 @@ switch atlasType,
         % find the SPECT files in atlas space
         imgDir = '/home/torgil/tmp/rotte/git_base/img/crop_whs/';
         files = findFiles(imgDir,'.*\_SPECT.*\_cropWarped.nii.gz');
+    case 'WHS_extra',        
+        labelsPath = '/home/torgil/tmp/rotte/atlas/whs/Extra/vH-DiV_2.label'; % atlas labels
+        atlasPath  = '/home/torgil/tmp/rotte/atlas/whs/Extra/vH_DiV_2_02mm.nii.gz'; % atlas rois        
+        % find the SPECT files in atlas space
+        imgDir = '/home/torgil/tmp/rotte/git_base/img/crop_whs/';
+        files = findFiles(imgDir,'.*\_SPECT.*\_cropWarped.nii.gz');  
     otherwise,
         error('Unknown atlas type')
 end
