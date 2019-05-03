@@ -1,0 +1,43 @@
+sig 
+
+Left_anterior_commissure_posterior_part 
+                                                   0.02006099 
+                     Right_anterior_commissure_posterior_part 
+                                                   0.02543384 
+                                  Left_entopeduncular_nucleus 
+                                                   0.02764077 
+                                         Left_globus_pallidus 
+                                                   0.02873804 
+                     Left_brachium_of_the_superior_colliculus 
+                                                   0.03854067 
+                                        Left_stria_terminalis 
+                                                   0.04489970 
+                                  Left_supraoptic_decussation 
+                                                   0.04576937 
+                      Right_anterior_commissure_anterior_part 
+                                                   0.05699476 
+                                                   
+  brain scaling                                                 
+                                                   
+                     Right_anterior_commissure_posterior_part 
+                                                  0.004304300 
+                      Right_anterior_commissure_anterior_part 
+                                                  0.008429335 
+                                        Right_cornu_ammonis_1 
+                                                  0.009960798 
+                                         Left_globus_pallidus 
+                                                  0.014624858 
+                                     Right_perirhinal_area_35 
+                                                  0.026061417 
+                      Left_anterior_commissure_posterior_part 
+                                                  0.028352049 
+                              Right_lateral_entorhinal_cortex 
+                                                  0.032545373 
+                                                Left_striatum 
+                                                  0.033781439 
+                              Right_alveus_of_the_hippocampus 
+                                                  0.037767518 
+                                        Left_substantia_nigra 
+                                                  0.040444295 
+                                     Left_periaqueductal_gray 
+                                                  0.056985096 
